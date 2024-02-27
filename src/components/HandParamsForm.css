@@ -1,0 +1,41 @@
+/* HandParamsForm.css */
+
+.hand-params-form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+  
+  /* Thiết lập các ô nhập có kích thước bằng nhau */
+  .hand-params-form-container .form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia cột thành 2 phần bằng nhau */
+    gap: 20px; /* Khoảng cách giữa các ô */
+  }
+  
+  /* Thiết lập font chữ và kích thước */
+  .hand-params-form-container input {
+    width: calc(100% - 10px); /* Điều chỉnh độ rộng của input */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 10px; /* Tạo khoảng cách dưới giữa các ô nhập */
+    box-sizing: border-box;
+  }
+  
+  .hand-params-form-container button[type="submit"] {
+    display: block;
+    width: 50%;
+    padding: 12px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    box-sizing: border-box;
+    margin-top: 10px; /* Khoảng cách từ nút Submit đến các ô nhập */
+  }
+  .hand-params-form-container:active {
+    cursor: grabbing;
+  }

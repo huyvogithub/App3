@@ -1,0 +1,182 @@
+/* App.css */
+.App {
+  text-align: center;
+}
+
+header {
+  background-color: #d20c0c;
+  padding: 20px;
+}
+
+h1.app-title {
+  color: #0004df;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+.form-container{
+  width: 100%;
+  height: 150%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s, opacity 0.3s;
+  
+}
+
+.user-list-container {
+  width: 80%;
+  height: 150%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s, opacity 0.3s;
+  
+}
+
+/* CSS cho thanh menu */
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 999; /* Đảm bảo thanh menu hiển thị trên cùng */
+}
+
+.menu-line {
+  width: 25px;
+  height: 3px;
+  background-color: #fff; /* Màu sắc của menu icon */
+  margin: 3px 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Hiển thị menu khi được mở ra */
+.menu-open .form-container,
+.menu-open .user-list-container {
+  display: none;
+}
+
+.menu-open .form-container,
+.menu-open .user-list-container {
+  display: block;
+  /* Thêm các kiểu hiển thị cho menu khi mở ra */
+}
+
+/* Hiệu ứng khi menu mở ra */
+.menu-open .form-container {
+  transform: translateX(-150%);
+  opacity: 0;
+}
+
+.menu-open .user-list-container {
+  transform: translateX(150%);
+  opacity: 0;
+}
+
+/* CSS cho side menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  transition: left 0.3s ease;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu li {
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.side-menu li:hover {
+  background-color: #555;
+}
+
+.side-menu.open {
+  left: 0;
+}
+.page-container.hidden {
+  display: none;
+}
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.chartmongo-container {
+  width: 100%;
+  height: 200%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s, opacity 0.3s;
+  
+}
+.graph-container {
+  width: 100%;
+  height: 2000%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s, opacity 0.3s;
+  
+}
+.image-container {
+  width: 180px; /* Đổi kích thước theo nhu cầu */
+  height: 180px; /* Đổi kích thước theo nhu cầu */
+  overflow: hidden; /* Ẩn phần vượt quá khung container */
+  border: 0px solid #ccc; /* Viền khung ảnh */
+  border-radius: 0%; /* Bo tròn khung ảnh để tạo hình tròn */
+  margin-left: auto;
+  position: absolute; /* Đặt vị trí tuyệt đối */
+  top: 0px; /* Cách trên 10px từ phía trên của header */
+  right: 0px; /* Cách phải 10px từ phía phải của header */
+  bottom: 0px;
+  background-color: #d20c0c; /* Màu nền đỏ */
+}
+
+.avatar-image {
+  width: 100%; /* Kích thước hình ảnh sẽ đầy đủ trong container */
+  height: 100%; /* Kích thước hình ảnh sẽ đầy đủ trong container */
+  object-fit: cover; /* Hiển thị toàn bộ hình ảnh trong kích thước đã chỉ định */
+}

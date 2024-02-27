@@ -1,0 +1,48 @@
+/* UserLogin.css */
+
+.auth-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* Điều chỉnh kích thước chữ và căn chỉnh cho các trường input */
+input[type="text"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-size: 20px; /* Tăng kích thước chữ */
+  box-sizing: border-box;
+}
+
+/* Điều chỉnh kích thước chữ cho tiêu đề của các trường */
+legend {
+  font-size: 28px; /* Tăng kích thước chữ của tiêu đề */
+  font-weight: bold;
+}
+
+/* Thêm một số căn chỉnh và margin theo nhu cầu */
+button {
+  background-color: #61dafb;
+  color: #fff;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px; /* Tăng kích thước chữ của nút */
+  font-weight: bold; /* Tô đậm chữ của nút */
+}
+
+button:hover {
+  background-color: #4fa3d1;
+}
+.delete-form-container-right {
+  margin-left: 20px; /* Điều chỉnh khoảng cách giữa form và nút */
+}
