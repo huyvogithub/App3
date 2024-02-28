@@ -51,17 +51,13 @@ const App = () => {
             const data = response.data;
 
             setGaugesData({
-                taytrai: data[0]?.public?.output?.jsonData?.taytrai_p || 0,
-                cangtaytrai: data[0]?.public?.output?.jsonData?.cangtaytrai_p || 0,
-                tayphai: data[0]?.public?.output?.jsonData?.tayphai_p || 0,
-                cangtayphai: data[0]?.public?.output?.jsonData?.cangtayphai_p || 0,
                 nhiptim: data[0]?.public?.output?.jsonData?.nhiptim || 0,
                 spo2: data[0]?.public?.output?.jsonData?.spo2 || 0,
                 lucnamcv: data[0]?.public?.output?.jsonData?.lucnamcv || 0,
-                taytrai_đ: data[0]?.public?.output?.jsonData?.taytrai_p || 0,
-                cangtaytrai_đ: data[0]?.public?.output?.jsonData?.cangtaytrai_p || 0,
-                tayphai_đ: data[0]?.public?.output?.jsonData?.tayphai_p || 0,
-                cangtayphai_đ: data[0]?.public?.output?.jsonData?.cangtayphai_p || 0,
+                taytrai_đ: data[0]?.public?.output?.jsonData?.taytrai_goc_đ || 0,
+                cangtaytrai_đ: data[0]?.public?.output?.jsonData?.cangtaytrai_đ || 0,
+                tayphai_đ: data[0]?.public?.output?.jsonData?.tayphai_goc_đ || 0,
+                cangtayphai_đ: data[0]?.public?.output?.jsonData?.cangtayphai_đ || 0,
             });
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -115,37 +111,37 @@ const App = () => {
                 <div>
                     <GaugeChart
                         label="TAY TRÁI"
-                        value={gaugesData.taytrai}
-                        minValue={-3.14}
-                        maxValue={3.14}
-                        unit="RAD"
+                        value={gaugesData.taytrai_đ}
+                        minValue={-360}
+                        maxValue={360}
+                        unit="Độ"
                     />
                 </div>
                 <div>
                     <GaugeChart
                         label="TAY PHẢI"
-                        value={gaugesData.tayphai}
-                        minValue={-3.14}
-                        maxValue={3.14}
-                        unit="RAD"
+                        value={gaugesData.tayphai_đ}
+                        minValue={-360}
+                        maxValue={360}
+                        unit="Độ"
                     />
                 </div>
                 <div>
                     <GaugeChart
                         label="CẲNG TAY TRÁI"
-                        value={gaugesData.cangtaytrai}
-                        minValue={-3.14}
-                        maxValue={3.14}
-                        unit="RAD"
+                        value={Math.abs(gaugesData.cangtaytrai_đ)}
+                        minValue={-360}
+                        maxValue={360}
+                        unit="Độ"
                     />
                 </div>
                 <div>
                     <GaugeChart
                         label="CẲNG TAY PHẢI"
-                        value={gaugesData.cangtayphai}
-                        minValue={-3.14}
-                        maxValue={3.14}
-                        unit="RAD"
+                        value={Math.abs(gaugesData.cangtayphai_đ)}
+                        minValue={-360}
+                        maxValue={360}
+                        unit="Độ"
                     />
                 </div>
                 <div>

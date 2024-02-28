@@ -1,15 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import './ThreeJSComponent.css'; // Import CSS file
+import './ThreeDComponent.css'; // Import CSS file
 import MyImage from './MOHINH3D.glb'; // Import CSS file
-
 const SmallFrame = () => {
-    const mount = useRef(null);
-
     useEffect(() => {
-        let camera, scene, renderer, Taytrai, Tayphai, Cotaytrai, Cotayphai;
+        let camera, scene, renderer, Taytrai, Tayphai, Cotaytrai, Cotayphai, Chantrai, Chanphai, Bapchantrai, Bapchanphai;
 
         const init = () => {
             camera = new THREE.PerspectiveCamera(40, (window.innerWidth / 2) / (window.innerHeight / 2), 0.01, 10);
@@ -65,31 +62,21 @@ const SmallFrame = () => {
                 Cotayphai = Bones.find((bone) => bone.name === 'mixamorigRightForeArm');
                 Taytrai.rotation.x = 1.4;
                 Tayphai.rotation.x = 1.4;
-                // Chỉnh kích thước của model
-                //scene.scale.set(scaleFactor, scaleFactor, scaleFactor);
-                //model.scale.set(scaleFactor, scaleFactor, scaleFactor);
-                // const degreeToRadian = Math.PI / 180;
-                /*async function layDuLieu() {
-                    try {
 
-                        const response = await fetch('http://localhost:1880/bye2');
-                        const data = await response.json();
-                        const TAYTRAI = parseFloat(data.TAITRAI);
-                        const TAYPHAI = parseFloat(data.TAIPHAI);
-                        const CANGTAYTRAI = parseFloat(data.CANGTAYTRAI);
-                        const CANGTAYPHAI = parseFloat(data.CANGTAYPHAI);
-                        Taytrai.rotation.z = TAYTRAI;
-                         Tayphai.rotation.z = TAYPHAI;
-                         Cotaytrai.rotation.z = CANGTAYTRAI;
-                         Cotayphai.rotation.z = CANGTAYPHAI;
-                    } catch (error) {
-                        console.error('Lỗi khi lấy dữ liệu:', error);
-                    }
-                }*/
+                // Chân 
+                Chantrai = Bones.find((bone) => bone.name === 'mixamorigLeftUpLeg');
+                Chanphai = Bones.find((bone) => bone.name === 'mixamorigRightUpLeg');
+                Bapchantrai = Bones.find((bone) => bone.name === 'mixamorigLeftLeg');
+                Bapchanphai = Bones.find((bone) => bone.name === 'mixamorigRightLeg');
+
+
+
+
+
 
 
                 async function fetchData() {
-                    fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/data-byptt/endpoint/GET_MOTION_API')
+                    fetch('https://ap-southeast-1.aws.data.mongodb-api.com/app/data-tqlme/endpoint/GET_MOTION_API')
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error('Network response was not ok');
@@ -114,22 +101,60 @@ const SmallFrame = () => {
                         });
                 }
 
+
+
+                // Chân 
+                async function fetchData_chân() {
+                    fetch('https://asia-south1.gcp.data.mongodb-api.com/app/application-0-iatxy/endpoint/TEST_GET')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            //const apiDataDiv = document.getElementById('apiData');
+
+
+                            const DUITRAI = data[0].public.output.jsonData.Roll_dui_trai_moi;
+                            const BAPCHANTRAI = data[0]?.public?.output?.jsonData?.Roll_bap_chan_trai_moi;
+                            const DUIPHAI = data[0]?.public?.output?.jsonData?.Roll_dui_phai_moi;
+                            const BAPCHANPHAI = data[0]?.public?.output?.jsonData?.Roll_bap_chan_phai_moi;
+                            Chantrai.rotation.x = DUITRAI;
+                            Chanphai.rotation.x = DUIPHAI;
+                            Bapchantrai.rotation.x = BAPCHANTRAI;
+                            Bapchanphai.rotation.x = BAPCHANPHAI;
+
+
+                        })
+                        .catch(error => {
+                            console.error('There was a problem with the fetch operation:', error);
+                        });
+                }
+
+
+                // Đầu 
+
+
                 fetchData();
-                setInterval(fetchData, 100);
+                fetchData_chân();
+                setInterval(() => {
+                    fetchData();
+                    fetchData_chân();
+                }, 500);
 
 
-
-
-                //setInterval(layDuLieu, 10);
             });
+
+            //setInterval(layDuLieu, 10);
+
 
             renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.setPixelRatio(window.devicePixelRatio);
-            // Thu nhỏ kích thước của renderer lại 1/2
-            renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+            renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.outputEncoding = THREE.sRGBEncoding;
 
-            mount.current.appendChild(renderer.domElement);
+            document.body.appendChild(renderer.domElement);
 
             window.addEventListener('resize', onWindowResize, false);
 
@@ -144,22 +169,21 @@ const SmallFrame = () => {
         };
 
         const onWindowResize = () => {
-            camera.aspect = (window.innerWidth / 2) / (window.innerHeight / 2);
+            camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
-            // Thu nhỏ kích thước của renderer lại 1/2
-            renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+            renderer.setSize(window.innerWidth, window.innerHeight);
         };
 
         init();
         animate();
 
         return () => {
-            mount.current.removeChild(renderer.domElement);
+            document.body.removeChild(renderer.domElement);
         };
     }, []);
 
     return (
-        <div className="three-js-container" ref={mount}>
+        <div className="three-d-component-wrapper">
             {null}
         </div>
     );

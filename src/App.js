@@ -5,7 +5,7 @@ import Form from './components/Form';
 import UserList from './components/UserList';
 import EmbeddedDashboard from './components/EmbeddedDashboard';
 import SmallFrame from './components/SmallFrame';
-import GaussianGraph from './components/GaussianGraph';
+import Gauge from './components/Gauge_edit';
 import Search from './components/Search';
 import ThreeJSComponent from './components/ThreeJSComponent';
 import MyImage from './components/logotdtu.png';
@@ -32,6 +32,7 @@ function App() {
           <div className="menu-line" />
           <div className="menu-line" />
           <div className="menu-line" />
+          <div className="menu-line" />
         </div>
         <h1 className="app-title">A SIMULATION SYSTEM OF HUMAN MOTION - THE HAND PART</h1>
         <div className="image-container">
@@ -50,18 +51,22 @@ function App() {
         </div>
         <div className={`chartmongo-container ${currentPage === 'userList2' ? 'visible' : 'hidden'}`}>
           <EmbeddedDashboard />
-
-
         </div>
+
         {currentPage === 'PAGE4' && (
           <div className="user-list-container">
-            <TETS />
+            <Gauge />
             <SmallFrame />
-
           </div>
+        )
+        }
+        {currentPage === 'CHUNG' && (
+          <div className="user-list-container">
 
-        )}
-
+            <ThreeJSComponent />
+          </div>
+        )
+        }
       </main>
       <aside className={`side-menu ${isMenuOpen ? 'open' : ''}`}>
         <ul>
@@ -69,6 +74,7 @@ function App() {
           <li onClick={() => handleMenuClick('userList')}>DANH SÁCH NGƯỜI DÙNG</li>
           <li onClick={() => handleMenuClick('userList2')}>BIỂU ĐỒ THÔNG SỐ THEO THỜI GIAN</li> {/* Thêm mục mới */}
           <li onClick={() => handleMenuClick('PAGE4')}>MÔ PHỎNG CHUYỂN ĐỘNG</li>
+          <li onClick={() => handleMenuClick('CHUNG')}>MÔ PHỎNG CHUYỂN ĐỘNG KẾT HỢP</li>
         </ul>
       </aside>
     </div>
