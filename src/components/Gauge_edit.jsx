@@ -110,42 +110,6 @@ const App = () => {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
                 <div>
                     <GaugeChart
-                        label="TAY TRÁI"
-                        value={gaugesData.taytrai_đ}
-                        minValue={-360}
-                        maxValue={360}
-                        unit="Độ"
-                    />
-                </div>
-                <div>
-                    <GaugeChart
-                        label="TAY PHẢI"
-                        value={gaugesData.tayphai_đ}
-                        minValue={-360}
-                        maxValue={360}
-                        unit="Độ"
-                    />
-                </div>
-                <div>
-                    <GaugeChart
-                        label="CẲNG TAY TRÁI"
-                        value={Math.abs(gaugesData.cangtaytrai_đ)}
-                        minValue={-360}
-                        maxValue={360}
-                        unit="Độ"
-                    />
-                </div>
-                <div>
-                    <GaugeChart
-                        label="CẲNG TAY PHẢI"
-                        value={Math.abs(gaugesData.cangtayphai_đ)}
-                        minValue={-360}
-                        maxValue={360}
-                        unit="Độ"
-                    />
-                </div>
-                <div>
-                    <GaugeChart
                         label="NHỊP TIM"
                         value={gaugesData.nhiptim}
                         minValue={0}
@@ -180,6 +144,46 @@ const App = () => {
                         <p style={{ fontSize: '1.8em', fontWeight: 'bold', color: 'red', fontFamily: 'Times New Roman' }}>{getLucnamcvStatus()}</p>
                     </div>
                 </div>
+
+
+
+                <div>
+                    <GaugeChart
+                        label="TAY TRÁI"
+                        value={gaugesData.taytrai_đ}
+                        minValue={-360}
+                        maxValue={360}
+                        unit="Độ"
+                    />
+                </div>
+                <div>
+                    <GaugeChart
+                        label="TAY PHẢI"
+                        value={gaugesData.tayphai_đ}
+                        minValue={-360}
+                        maxValue={360}
+                        unit="Độ"
+                    />
+                </div>
+                <div>
+                    <GaugeChart
+                        label="CẲNG TAY TRÁI"
+                        value={Math.abs(gaugesData.cangtaytrai_đ)}
+                        minValue={-360}
+                        maxValue={360}
+                        unit="Độ"
+                    />
+                </div>
+                <div>
+                    <GaugeChart
+                        label="CẲNG TAY PHẢI"
+                        value={Math.abs(gaugesData.cangtayphai_đ)}
+                        minValue={-360}
+                        maxValue={360}
+                        unit="Độ"
+                    />
+                </div>
+
 
 
             </div>
