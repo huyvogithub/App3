@@ -51,8 +51,8 @@ const App = () => {
             const data = response.data;
 
             setGaugesData({
-                nhiptim: data[0]?.public?.output?.jsonData?.nhiptim || 0,
-                spo2: data[0]?.public?.output?.jsonData?.spo2 || 0,
+                nhiptim: data[0]?.public?.output?.jsonData?.nhiptimK || 0,
+                spo2: data[0]?.public?.output?.jsonData?.spo2K || 0,
                 lucnamcv: data[0]?.public?.output?.jsonData?.lucnamcv || 0,
                 taytrai_đ: data[0]?.public?.output?.jsonData?.taytrai_goc_đ || 0,
                 cangtaytrai_đ: data[0]?.public?.output?.jsonData?.cangtaytrai_đ || 0,
@@ -91,7 +91,7 @@ const App = () => {
     const getLucnamcvStatus = () => {
         if (gaugesData.lucnamcv <= 0) {
             return 'Chưa phát hiện lực nắm';
-        } else if (gaugesData.lucnamcv > 0 && gaugesData.lucnamcv < 200) {
+        } else if (gaugesData.lucnamcv > 0 && gaugesData.lucnamcv < 2000) {
             return 'Lực nắm thấp';
         } else {
             return 'Lực nắm bình thường';
@@ -131,8 +131,8 @@ const App = () => {
                         label="LỰC NẮM TAY"
                         value={gaugesData.lucnamcv}
                         minValue={0}
-                        maxValue={1000}
-                        unit="Hgram"
+                        maxValue={10000}
+                        unit="Gram"
                     />
                 </div>
                 {/* Hiển thị thông tin nhịp tim, tỉ lệ oxi trong máu, và lực nắm tay */}

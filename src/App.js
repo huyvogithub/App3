@@ -9,7 +9,7 @@ import Gauge from './components/Gauge_edit';
 import Search from './components/Search';
 import ThreeJSComponent from './components/ThreeJSComponent';
 import MyImage from './components/logotdtu.png';
-import TETS from './components/tets';
+import TETS from './components/THREEJS';
 //import GET from './components/GET';
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,7 +56,7 @@ function App() {
         {currentPage === 'PAGE4' && (
           <div className="user-list-container">
             <Gauge />
-            <SmallFrame />
+            <TETS />
           </div>
         )
         }
